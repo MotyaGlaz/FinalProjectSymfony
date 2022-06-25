@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Кланы{% endblock %}
+
+{% block body %}
+    <h1>Кланы</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Название</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for clan in clans %}
+            <tr>
+                <td>{{ clan.id }}</td>
+                <td>{{ clan.name }}</td>
+                <td>
+                    <a href="{{ path('app_clan_edit', {'id': clan.id}) }}">Изменить</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Список пуст</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_clan_new') }}">Создать клан</a>
+{% endblock %}

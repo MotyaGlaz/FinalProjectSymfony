@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Издатели{% endblock %}
+
+{% block body %}
+    <h1>Издатели</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Название</th>
+                <th>Дейсвие</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for publisher in publishers %}
+            <tr>
+                <td>{{ publisher.id }}</td>
+                <td>{{ publisher.name }}</td>
+                <td>
+                    <a href="{{ path('app_publisher_edit', {'id': publisher.id}) }}">Изменить</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Записей нет</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_publisher_new') }}">Добавить издателя</a>
+{% endblock %}

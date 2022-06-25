@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Добавление игры{% endblock %}
+
+{% block body %}
+    <h1>Добавление игры</h1>
+
+    {{ include('game/_form.html.twig') }}
+
+    <a href="{{ path('app_game_index') }}">Вернуться</a>
+{% endblock %}

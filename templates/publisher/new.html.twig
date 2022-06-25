@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Добавление издателя{% endblock %}
+
+{% block body %}
+    <h1>Добавление издателя</h1>
+
+    {{ include('publisher/_form.html.twig') }}
+
+    <a href="{{ path('app_publisher_index') }}">Вернуться</a>
+{% endblock %}

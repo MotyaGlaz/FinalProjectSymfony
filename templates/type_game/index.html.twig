@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Типы игр{% endblock %}
+
+{% block body %}
+    <h1>Типы игр</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Тип игры</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_game in type_games %}
+            <tr>
+                <td>{{ type_game.id }}</td>
+                <td>{{ type_game.name }}</td>
+                <td>
+                    <a href="{{ path('app_type_game_edit', {'id': type_game.id}) }}">Изменить</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Записей нет</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_type_game_new') }}">Создать тип</a>
+{% endblock %}

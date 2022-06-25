@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Игры клана{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <h1>Игры клана</h1>
+        {% if clans %}
+            <b>Выберите клан</b><br>
+            <form action="/" method="get">
+                <label> Название клана:
+                    <select name="clan">
+                        <option value="">Выбрать</option>
+                        {% for clan in clans %}
+                            {% if clan %}
+                                <option value="{{ clan.id }}">{{ clan.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </label> <br>
+                <input type="submit" value="Вывести игры">
+            </form>
+            <br>
+        {% else %}
+            <b>Таблица кланов пустая :(</b><br>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Игроки{% endblock %}
+
+{% block body %}
+    <h1>Игроки</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nickname</th>
+                <th>Список игр</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for player in players %}
+            <tr>
+                <td>{{ player.id }}</td>
+                <td>{{ player.nickname }}</td>
+                <td>
+                    {% for game in player.games %}
+                        <a href="{{ path('app_game_show', {'id': game.id}) }}">{{ game.name }}</a>
+                        <br>
+                    {% else %}
+                        —
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('app_player_edit', {'id': player.id}) }}">Изменить</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Записей нет</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_player_new') }}">Создать игрока</a>
+{% endblock %}

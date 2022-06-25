@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Игры{% endblock %}
+
+{% block body %}
+    <h1>Игры</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Название</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for game in games %}
+            <tr>
+                <td>{{ game.id }}</td>
+                <td>{{ game.name }}</td>
+                <td>
+                    <a href="{{ path('app_game_edit', {'id': game.id}) }}">Изменить</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Список пуст</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_game_new') }}">Добавить игру</a>
+{% endblock %}

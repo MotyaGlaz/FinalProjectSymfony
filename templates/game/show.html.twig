@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Игры{% endblock %}
+
+{% block body %}
+    <h1>Игры</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ game.id }}</td>
+            </tr>
+            <tr>
+                <th>Название</th>
+                <td>{{ game.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_game_index') }}">Вернуться</a>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('app_game_edit', {'id': game.id}) }}">Редактировать</a>
+        {{ include('game/_delete_form.html.twig') }}
+    {% endif %}
+{% endblock %}

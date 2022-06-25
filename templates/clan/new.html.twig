@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Создание клана{% endblock %}
+
+{% block body %}
+    <h1>Создание клана</h1>
+
+    {{ include('clan/_form.html.twig') }}
+
+    <a href="{{ path('app_clan_index') }}">Вернуться</a>
+{% endblock %}
